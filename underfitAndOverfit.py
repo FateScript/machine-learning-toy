@@ -5,7 +5,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def f(x):
+def f(x): # the function we want Least Square Model to learn
     return x**2 + 2*x + 1
 
 def loss(real_label,train_label):
@@ -37,7 +37,7 @@ class LeastSquareModel:
 sampleNum = 10
 ori_data = np.array(list(range(-10,10,2)))
 
-overfit_size,real_size,underfit_size = [6,3,2] # this list decides the model complexity
+overfit_size,real_size,underfit_size = [6,3,2] # this list decides the model's complexity
 data = f(ori_data) + np.random.randint(-3,3,sampleNum)
 
 overfit_model = LeastSquareModel(overfit_size)
