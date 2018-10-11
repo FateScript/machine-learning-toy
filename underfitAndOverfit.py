@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#! /usr/bin/python3
 # -*- coding:utf-8 -*-
 #This code gives a simple example of how underfit & overfit works
 #We use least square models to fit data and the best parameters is given with Linear Algebra method
