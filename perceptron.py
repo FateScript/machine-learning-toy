@@ -17,12 +17,12 @@ class perceptron:
         # weight update : -sum( y_i*x_i )
         # bias update   : -sum( y_i )
         self.init(x)
-        while(not self.convergence(x,y)):
+        while(not self.__convergence(x,y)):
             index = np.where(self.truepred == False)[0][0]
             self.weights += learning_rate * y[index] * x[index]
             self.bias += learning_rate * y[index]
 
-    def convergence(self,x,y):
+    def __convergence(self,x,y):
         #return wheather or not this model has converged
         self.truepred = self.predict(x) == y
         return self.truepred.all(axis=0)

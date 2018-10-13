@@ -33,7 +33,7 @@ class logisticRegresion:
         self.weights = np.ones(x.shape[1] + 1)
         bias = np.ones((x.shape[0],1))
         x = np.hstack((x,bias))
-        while( not self.convergence(x,y) ):
+        while( not self.__convergence(x,y) ):
             #calculate first derivative vector(sgd)
             first_derv_vec = np.dot( y- self.p1, x )
             #calculate second derivative matrix(newton method)
@@ -52,7 +52,7 @@ class logisticRegresion:
         bias = np.ones((x.shape[0],1))
         #change y = w_T * x + b to y = [w,1]_T * [x,1]
         x = np.hstack((x,bias))
-        while( not self.convergence(x,y) ):
+        while( not self.__convergence(x,y) ):
             delta_weights = np.dot(y-self.p1,x)
             delta_weights /= abs(delta_weights).max()
             self.weights += learning_rate * delta_weights
@@ -65,7 +65,7 @@ class logisticRegresion:
         self.weights = np.ones(x.shape[1] + 1)
         bias = np.ones((x.shape[0],1))
         x = np.hstack((x,bias))
-        while( not self.convergence(x,y) ):
+        while( not self.__convergence(x,y) ):
             temp = np.multiply( self.p1,(1-self.p1) )
             scale = np.multiply(y-self.p1, temp)
             delta_weights = np.dot(scale, x)
@@ -73,10 +73,10 @@ class logisticRegresion:
             delta_weights /= abs(delta_weights).max()
             self.weights += learning_rate * delta_weights
 
-    def convergence(self, x, y):
-        return (self.predict_innerData(x) == y).all(axis=0)
+    def __convergence(self, x, y):
+        return (self.__predict_innerData(x) == y).all(axis=0)
 
-    def predict_innerData(self, x):
+    def __predict_innerData(self, x):
         self.p1 = sigmoid(self.weights,x)
         y = 0 + (self.p1 > 0.5)
         return y
