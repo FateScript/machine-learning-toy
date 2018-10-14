@@ -4,13 +4,13 @@
 import numpy as np
 import math
 import matplotlib.pyplot as plt
-#from .svd import svd
+from svd import svd
 
-def SVD(M, use_np=True):
+def SVD(M, use_np=False):
     if use_np:
         return np.linalg.svd(M)
     else:
-        pass
+        return svd(M)
 
 class LDA:
 
